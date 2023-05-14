@@ -329,9 +329,8 @@ for session_id in range(predictors.shape[2]):
         coef[:, session_id] = np.concatenate((fitall_model.coef_[-1, :], fitall_model.intercept_))
     except:
         print(str(session_id) + '_skipped')
-coef_invlogit = (1 / (1 + np.exp(-coef))) - 0.5
+
 np.savez_compressed(os.path.join(directory_name, sim_name, 'regression_results'),
-                    coef_invlogit=coef_invlogit,
                     coef=coef,
                     acc=acc,
                     )
@@ -353,34 +352,34 @@ ax.plot(np.arange(0, rew_history.shape[1], 1), np.mean(rew_history, axis=0) / np
 ax.set_xlabel('Episode')
 ax.set_ylabel('Harvesting rate')
 ax = axs[1, 0]
-ax.plot(np.arange(0, rew_history.shape[1], 1), np.sum(coef_invlogit[:5, :], axis=0))
+ax.plot(np.arange(0, rew_history.shape[1], 1), np.sum(coef[:5, :], axis=0))
 ax.axhline(y=0, color='k', linestyle=':')
 ax.set_xlabel('Episode')
 ax.set_ylabel('$\Sigma$RewC')
 ax = axs[1, 1]
-ax.plot(np.arange(0, rew_history.shape[1], 1), np.sum(coef_invlogit[5:10, :], axis=0))
+ax.plot(np.arange(0, rew_history.shape[1], 1), np.sum(coef[5:10, :], axis=0))
 ax.axhline(y=0, color='k', linestyle=':')
 ax.set_xlabel('Episode')
 ax.set_ylabel('$\Sigma$C')
 ax = axs[2, 0]
 ax.axhline(y=0, color='k', linestyle=':')
-n_split = np.floor(coef_invlogit.shape[1] / trials_per_split).astype('int')
+n_split = np.floor(coef.shape[1] / trials_per_split).astype('int')
 for i in range(n_split):
-    ax.plot(np.arange(-1, -6, -1), np.mean(coef_invlogit[:5, i * trials_per_split + 1:(i + 1) * trials_per_split + 1], axis=1), c=cm.get_cmap('turbo')(i / (n_split - 1)),)
+    ax.plot(np.arange(-1, -6, -1), np.mean(coef[:5, i * trials_per_split + 1:(i + 1) * trials_per_split + 1], axis=1), c=cm.get_cmap('turbo')(i / (n_split - 1)),)
 cbar = fig.colorbar(cm.ScalarMappable(cmap=cm.get_cmap('turbo')), ax=ax, ticks=[0, 1])
 cbar.set_ticks(np.arange(0, 1.01, 1 / (n_split - 1)))
-cbar.ax.set_yticklabels(np.arange(trials_per_split / 2, coef_invlogit.shape[1] + 0.001, (coef_invlogit.shape[1] - np.mod(coef_invlogit.shape[1], trials_per_split)) / n_split))
+cbar.ax.set_yticklabels(np.arange(trials_per_split / 2, coef.shape[1] + 0.001, (coef.shape[1] - np.mod(coef.shape[1], trials_per_split)) / n_split))
 ax.set_xticks(np.arange(-1, -6, -1))
 ax.set_xlabel("Past Trials", fontsize=13)
 ax.set_ylabel("Transformed weight", fontsize=13)
 ax = axs[2, 1]
 ax.axhline(y=0, color='k', linestyle=':')
-n_split = np.floor(coef_invlogit.shape[1] / trials_per_split).astype('int')
+n_split = np.floor(coef.shape[1] / trials_per_split).astype('int')
 for i in range(n_split):
-    ax.plot(np.arange(-1, -6, -1), np.mean(coef_invlogit[5:10, i * trials_per_split + 1:(i + 1) * trials_per_split + 1], axis=1), c=cm.get_cmap('turbo')(i / (n_split - 1)))
+    ax.plot(np.arange(-1, -6, -1), np.mean(coef[5:10, i * trials_per_split + 1:(i + 1) * trials_per_split + 1], axis=1), c=cm.get_cmap('turbo')(i / (n_split - 1)))
 cbar = fig.colorbar(cm.ScalarMappable(cmap=cm.get_cmap('turbo')), ax=ax, ticks=[0, 1])
 cbar.set_ticks(np.arange(0, 1.01, 1 / (n_split - 1)))
-cbar.ax.set_yticklabels(np.arange(trials_per_split / 2, coef_invlogit.shape[1] + 0.001, (coef_invlogit.shape[1] - np.mod(coef_invlogit.shape[1], trials_per_split)) / n_split))
+cbar.ax.set_yticklabels(np.arange(trials_per_split / 2, coef.shape[1] + 0.001, (coef.shape[1] - np.mod(coef.shape[1], trials_per_split)) / n_split))
 ax.set_xticks(np.arange(-1, -6, -1))
 ax.set_xlabel("Past Trials", fontsize=13)
 ax.set_ylabel("Transformed weight", fontsize=13)

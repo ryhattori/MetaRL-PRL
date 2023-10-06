@@ -11,7 +11,7 @@ I tested the code in Python 3.7.9. Following libraries need to be installed to r
 
 
 ## References
-#### Behaviors of the Meta-RL network were characterized in the following publication:
+#### Behaviors of the Meta-RL network were characterized in the following publication (Please cite this paper if you used the code).:
   - Hattori, R., Hedrick, N.G., Jain, A., Chen, S., You, H., Hattori, M., Choi, J.H., Lim, B.K., Yasuda, R. and Komiyama, T. Meta-reinforcement learning  via orbitofrontal cortex. _Nature Neuroscience, in press_.
 #### The same behavior task was used for training mice in the following publications:
   - Hattori, R., Hedrick, N.G., Jain, A., Chen, S., You, H., Hattori, M., Choi, J.H., Lim, B.K., Yasuda, R. and Komiyama, T. Meta-reinforcement learning  via orbitofrontal cortex. _Nature Neuroscience, in press_.

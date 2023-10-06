@@ -13,7 +13,7 @@ I tested the code in Python 3.7.9. Following libraries need to be installed to r
 ## References
 #### Behaviors of the Meta-RL network were characterized in the following publication. Please cite this paper if you used the code.
   - Hattori, R., Hedrick, N.G., Jain, A., Chen, S., You, H., Hattori, M., Choi, J.H., Lim, B.K., Yasuda, R. and Komiyama, T. Meta-reinforcement learning  via orbitofrontal cortex. _Nature Neuroscience, in press_.
-#### The same behavior task was used for training mice in the following publications
+#### The same behavior task was used for training mice in the following publications.
   - Hattori, R., Hedrick, N.G., Jain, A., Chen, S., You, H., Hattori, M., Choi, J.H., Lim, B.K., Yasuda, R. and Komiyama, T. Meta-reinforcement learning  via orbitofrontal cortex. _Nature Neuroscience, in press_.
   - Hattori, R. and Komiyama, T. (2022). Context-dependent persistency as a coding mechanism for robust and widely distributed value coding. _Neuron_, doi: https://doi.org/10.1016/j.neuron.2021.11.001.
   - Hattori, R., Danskin, B., Babic, Z., Mlynaryk, N. and Komiyama, T. (2019). Area-Specificity and Plasticity of History-Dependent Value Coding During Learning. _Cell_, doi: https://doi.org/10.1016/j.cell.2019.04.027.
